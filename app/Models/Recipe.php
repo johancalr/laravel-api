@@ -9,6 +9,8 @@ class Recipe extends Model
 {
     use HasFactory;
 
+    protected $hidden = ['created_at'];
+
     public function tags() {
         return $this->belongsToMany(Tag::class);
     }
