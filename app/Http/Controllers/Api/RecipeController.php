@@ -9,10 +9,10 @@ use Illuminate\Http\Request;
 class RecipeController extends Controller {
     
     public function index() {
-        return Recipe::all();
+        return Recipe::with('user', 'category', 'tags')->get();
     }
 
     public function show(Recipe $recipe) {
-        return $recipe;
+        return $recipe->load('user', 'category', 'tags');
     }
 }
