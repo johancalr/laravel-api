@@ -9,7 +9,7 @@ class Tag extends Model
 {
     use HasFactory;
 
-    protected $hidden = ['created_at'];
+    protected $hidden = ['updated_at'];
 
     public function recipes() {
         return $this->belongsToMany(Recipe::class);

@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $hidden = ['created_at'/* ,'updated_at' */];
+    protected $hidden = ['updated_at'];
 
     public function recipes() {
         return $this->hasMany(Recipe::class);

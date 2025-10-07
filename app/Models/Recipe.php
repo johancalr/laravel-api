@@ -9,7 +9,7 @@ class Recipe extends Model
 {
     use HasFactory;
 
-    protected $hidden = ['created_at'];
+    protected $hidden = ['updated_at'];
 
     public function user() {
         return $this->belongsTo(User::class);
