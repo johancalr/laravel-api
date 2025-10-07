@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\RecipeController;
+use App\Http\Controllers\Api\TagController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +17,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/* Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+}); */
+
+Route::apiResource('categories', CategoryController::class)
+    ->only(['index', 'show']);
+    
+Route::apiResource('tags', TagController::class)
+    ->only(['index', 'show']);
+
+Route::apiResource('recipes', RecipeController::class)
+    ->only(['index', 'show']);
+
