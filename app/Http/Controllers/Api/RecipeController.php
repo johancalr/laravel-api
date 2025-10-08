@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\RecipeResource;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller {
     
     public function index() {
-        return Recipe::with('user', 'category', 'tags')->get();
+        $recipes = Recipe::all();
+        return RecipeResource::collection($recipes);
     }
 
     public function show(Recipe $recipe) {
-        return $recipe->load('user', 'category', 'tags');
+        $recipe = $recipe->load('user', 'category', 'tags');
+        return new RecipeResource($recipe);
     }
 }

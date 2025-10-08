@@ -29,7 +29,7 @@ class CategoryResource extends JsonResource
         ];
 
         if ($this->includeRecipes) {
-            $data['relationships']['recipes'] = $this->recipes;
+            $data['relationships']['recipes'] = RecipeResource::collection($this->recipes);
         }
 
         return $data;
